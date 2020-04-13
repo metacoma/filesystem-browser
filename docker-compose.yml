@@ -1,0 +1,12 @@
+version: '3'
+services:
+  minetest:
+    image: metacoma/minep9:latest 
+    build: .
+    ports:
+      - 0.0.0.0:30000:30000/udp
+    volumes:
+      - ./minep9/world:/usr/local/games/minep9
+      - ./minetest/minetest.conf:/usr/local/etc/minetest.conf
+      - ./stuff/pprint.lua:/usr/local/share/lua/5.1/pprint.lua
+    command: "--config /usr/local/etc/minetest.conf --gameid minep9"
